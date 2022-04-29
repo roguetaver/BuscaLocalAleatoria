@@ -16,6 +16,7 @@ string generate_subsequence(string seq, int k, int size)
 {
     string new_sequence;
     int random_index;
+
     random_device rd;
     unsigned seed = rd();
     default_random_engine generator(seed);
@@ -59,6 +60,7 @@ int main()
     string subseqB;
     string seqA;
     string seqB;
+    string tempseq;
     string bestSeqB;
     vector<subsequencia_B> subseqsB;
     int actual_score = 0;
@@ -67,12 +69,23 @@ int main()
     int n;
     int k;
     int p;
+    int tempint;
 
     // recebendo as sequencias A e B assim como seus tamanhos
     cin >> n;
     cin >> m;
     cin >> seqA;
     cin >> seqB;
+
+    if (n > m)
+    {
+        tempseq = seqA;
+        seqA = seqB;
+        seqB = tempseq;
+        tempint = m;
+        m = n;
+        n = tempint;
+    }
 
     // print das sequencias A e B assim como seus respectivos tamanhos
     cout << "-------------------------------------" << endl;
